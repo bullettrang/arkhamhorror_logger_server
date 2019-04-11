@@ -6,7 +6,6 @@ const mongoose = require('mongoose');
 const User = mongoose.model('users');
 
 passport.serializeUser((user,done)=>{
-    console.log('[serializeUser] ',user.id)
     done(null,user.id)      //userID here refers to the mongodb, we might get new OAuth signins, so we use mongodo's id
 });
 
@@ -14,14 +13,14 @@ passport.serializeUser((user,done)=>{
 passport.deserializeUser((id,done)=>{
     User.findById(id)
         .then(user=>{
-            console.log('[deserializeUser] ',user)
             done(null,user);
         })
 })
 passport.use(new GoogleStrategy({
     clientID:keys.googleClientID,
     clientSecret:keys.googleClientSecret,
-    callbackURL:'/auth/google/callback'
+    callbackURL:'/auth/google/callback',
+    proxy:true
 }, (accessToken,refreshToken,profile,done)=>{
     User.findOne({googleId:profile.id})
         .then((existingUser)=>{
