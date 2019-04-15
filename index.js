@@ -24,25 +24,5 @@ require('./routes/authRoutes')(app);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
 
-//todo
-//add mongodb 
-//npm install mongoose
-//add cluster
-
-//mongodb+srv://btrangcal:<password>@arkham-horror-logger-9e26v.mongodb.net/test?retryWrites=true
-
-//btrangcal
-//password XNocIEoCyVJnwqB8
-
-
-//production mongodb
-//btrangcal
-//5Epl0CzJIQfmVbpB
-
-
-//mongodb+srv://btrangcal:<password>@production-arkham-horror-logger-eakmb.mongodb.net/test?retryWrites=true
-
-//googleapi prod key
-//1064043536094-taugk8f2puinp8q40pnhvvmpi8qbjv67.apps.googleusercontent.com
-//googleapi client secret prod
-//7iaX1rVPcE-FXqtkFegfAxwJ
+//production
+//https://obscure-cliffs-25810.herokuapp.com
