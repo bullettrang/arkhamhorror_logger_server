@@ -4,8 +4,6 @@ module.exports=app=>{
         res.send({welcome:'ARKHAM LOGGER2'});
     })
     
-    
-    
     app.get('/auth/google',passport.authenticate('google',{
             scope:['profile','email']
         })
@@ -14,7 +12,7 @@ module.exports=app=>{
     app.get('/auth/google/callback',
         passport.authenticate('google'),
         (req,res)=>{
-            res.redirect('/campaign');
+            res.redirect('/');
         });
     app.get('/api/logout',(req,res)=>{
         req.logout();           //logout() provided by passport

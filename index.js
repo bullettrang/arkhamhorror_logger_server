@@ -16,11 +16,11 @@ app.use(
         keys:[keys.cookieKey]
     })
 );
-
+app.use(express.json());       // to support JSON-encoded bodies
 app.use(passport.initialize());
 app.use(passport.session());
 require('./routes/authRoutes')(app);
-
+require('./routes/choicesRoute')(app);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
 
