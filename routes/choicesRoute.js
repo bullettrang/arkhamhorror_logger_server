@@ -25,14 +25,14 @@ module.exports=app=>{
                 if(completedScenarioIdx===-1){
                     FileFound.completedScenarios.push(scenario);
                     await FileFound.save();
-                    await updateResultsWithUserAnswers(answers,_file);
+                    await updateResultsWithUserAnswers(answers,_file,scenarioTitle);
                     res.send(FileFound);
 
                 }
                 else{       //overwrite old scenario within file
                     FileFound.completedScenarios[completedScenarioIdx]=scenario;
                     await FileFound.save();
-                    await updateResultsWithUserAnswers(answers,_file);
+                    await updateResultsWithUserAnswers(answers,_file,scenarioTitle);
                     res.send(FileFound);
                 }
 
@@ -48,19 +48,8 @@ module.exports=app=>{
     })
 
     app.post('/api/submitFile', async (req,res)=>{
-        console.log('[/api/submitFile] ',req.user.id);
         const {campaignTitle,completedScenarios} = req.body;
         try{
-           const FileFound = await File.findOne({_user:req.user.id});       //TODO: change this to find by id later
-
-           if(FileFound){
-               const mergedScenarios = _.union(FileFound.completedScenarios,completedScenarios);
-               FileFound.completedScenarios = mergedScenarios;
-               await FileFound.save();
-               
-               res.send(FileFound);
-           }
-           else{
                 const file = await new File({
                                 campaignTitle:campaignTitle,
                                 _user:req.user.id,
@@ -69,7 +58,6 @@ module.exports=app=>{
                 await file.save();
                 
                 res.send(file);
-           }
         }
         catch(error){
             res.status(422).send(err);
@@ -83,16 +71,26 @@ module.exports=app=>{
         }
         catch(err){
             res.status(422).send(err);
+        } 
+    });
+
+    app.get('/api/results',async(req,res)=>{
+        console.log(req.query.scenario);
+        const scenarioTitle=req.query.scenario
+        try{
+            const results = await Result.find({scenarioTitle:scenarioTitle});
+            res.send(results);
         }
-        
-        
+        catch(err){
+            res.status(422).send(err);
+        } 
     });
 }
 
 //takes in user answers and _file id
 //updates global results of user choices
 //by either updating Result Documents or making new ones if Result documents do not exist yet.  
-const updateResultsWithUserAnswers = async (answers,_file)=>{
+const updateResultsWithUserAnswers = async (answers,_file,scenarioTitle)=>{
     const questionIds = answers.map(ans=> ({questionID:Object.keys(ans)[0]}));
 
                     for(let qId of questionIds){
@@ -102,29 +100,41 @@ const updateResultsWithUserAnswers = async (answers,_file)=>{
                             if(ansIdx===-1)
                                 continue;
                             if(ResultFound){
-                                choiceIdx=ResultFound.choices.findIndex(choice=>choice.choiceValue===answers[ansIdx][qId[key]])
-                                if(choiceIdx===-1){ //no such choice ever submitted, we will create a new choice schema and push it into Result
-                                    console.log('cannot found choice within result');
-                                    const choiceObj = _.assign({choiceValue:null,total:0},{choiceValue:answers[ansIdx][qId[key]],total:1});
-                                    ResultFound.choices.push(choiceObj);
-                                    await ResultFound.save();    
+                                const answerValue = answers[ansIdx][qId[key]];
+                                if(typeof answerValue ==="number"){
+                                    choiceIdx=ResultFound.choices.findIndex(choice=>choice.choiceValue===answerValue)
+                                    if(choiceIdx===-1){ //no such choice ever submitted, we will create a new choice schema and push it into Result
+                                        const choiceObj = _.assign({choiceValue:null,total:0},{choiceValue:answerValue,total:1});
+                                        ResultFound.choices.push(choiceObj);
+                                        await ResultFound.save();    
+                                    }
+                                    else{//increment with user's answer
+                                        ResultFound.choices[choiceIdx].total= ResultFound.choices[choiceIdx].total +1;
+                                        await ResultFound.save();
+                                    }
                                 }
                                 else{
-                                    ResultFound.choices[choiceIdx].total= ResultFound.choices[choiceIdx].total +1;
-                                    await ResultFound.save();
+                                    console.log('not a number ',answerValue);
                                 }
                             }
                             else{           //create new result
-                                console.log('creating new result');
-                                const choiceObj = _.assign({choiceValue:null,total:0},{choiceValue:answers[ansIdx][qId[key]],total:1})
-                                const arrChoices = [choiceObj];
-                                const result = await new Result({
-                                                                questionID:qId[key],   
-                                                                _file:_file, 
-                                                                choices:arrChoices   
-                                                        });
-                                await result.save();
-                                
+                                //TODO:add support for checkbox type questions
+                                const answerValue = answers[ansIdx][qId[key]];
+                                if(typeof answerValue==="number"){
+                                    console.log('creating new result');
+                                    const choiceObj = _.assign({choiceValue:null,total:0},{choiceValue:answerValue,total:1})
+                                    const arrChoices = [choiceObj];
+                                    const result = await new Result({
+                                                                    questionID:qId[key],   
+                                                                    _file:_file, 
+                                                                    choices:arrChoices,
+                                                                    scenarioTitle:scenarioTitle   
+                                                            });
+                                    await result.save();
+                                }
+                                else{
+                                    console.log('not a number ',answerValue);
+                                }
                             }
                         }
                     }
