@@ -6,7 +6,8 @@ const ScenarioSchema = require('./Scenario');
 const fileSchema = new Schema({
     campaignTitle:String,
     _user:{type:Schema.Types.ObjectId,ref:'User'},
-    completedScenarios:[ScenarioSchema]
+    completedScenarios:[ScenarioSchema],
+    fileName:String
 });
 
 module.exports=fileSchema;

@@ -29,8 +29,8 @@ module.exports=app=>{
                     res.send(FileFound);
 
                 }
-                else{       //overwrite old scenario within file
-                    FileFound.completedScenarios[completedScenarioIdx]=scenario;
+                else{       
+                    FileFound.completedScenarios[completedScenarioIdx]=scenario;   //overwrite old scenario within file
                     await FileFound.save();
                     await updateResultsWithUserAnswers(answers,_file,scenarioTitle);
                     res.send(FileFound);
@@ -48,19 +48,20 @@ module.exports=app=>{
     })
 
     app.post('/api/submitFile', async (req,res)=>{
-        const {campaignTitle,completedScenarios} = req.body;
+        // const {campaignTitle,completedScenarios} = req.body;
         try{
-                const file = await new File({
-                                campaignTitle:campaignTitle,
-                                _user:req.user.id,
-                                completedScenarios:completedScenarios
-                            });
-                await file.save();
+                // const file = await new File({
+                //                 campaignTitle:campaignTitle,
+                //                 _user:req.user.id,
+                //                 completedScenarios:completedScenarios
+                //             });
+                // await file.save();
                 
-                res.send(file);
+                // res.send(file);
+                await createNewPlayerFile(req,res);
         }
         catch(error){
-            res.status(422).send(err);
+            res.status(422).send(error);
         }
     });
 
@@ -87,6 +88,7 @@ module.exports=app=>{
     });
 }
 
+
 //takes in user answers and _file id
 //updates global results of user choices
 //by either updating Result Documents or making new ones if Result documents do not exist yet.  
@@ -104,11 +106,13 @@ const updateResultsWithUserAnswers = async (answers,_file,scenarioTitle)=>{
                                 if(typeof answerValue ==="number"){
                                     choiceIdx=ResultFound.choices.findIndex(choice=>choice.choiceValue===answerValue)
                                     if(choiceIdx===-1){ //no such choice ever submitted, we will create a new choice schema and push it into Result
-                                        const choiceObj = _.assign({choiceValue:null,total:0},{choiceValue:answerValue,total:1});
+                                        const choiceObj = initChoiceObject(answerValue);
                                         ResultFound.choices.push(choiceObj);
+                                        ResultFound.totalVotes= ResultFound.totalVotes+1;
                                         await ResultFound.save();    
                                     }
                                     else{//increment with user's answer
+                                        ResultFound.totalVotes= ResultFound.totalVotes+1;
                                         ResultFound.choices[choiceIdx].total= ResultFound.choices[choiceIdx].total +1;
                                         await ResultFound.save();
                                     }
@@ -119,16 +123,17 @@ const updateResultsWithUserAnswers = async (answers,_file,scenarioTitle)=>{
                             }
                             else{           //create new result
                                 //TODO:add support for checkbox type questions
-                                const answerValue = answers[ansIdx][qId[key]];
-                                if(typeof answerValue==="number"){
-                                    console.log('creating new result');
-                                    const choiceObj = _.assign({choiceValue:null,total:0},{choiceValue:answerValue,total:1})
+                                const questionID = qId[key];
+                                const answerValue = answers[ansIdx][questionID];
+                                if(isCheckBoxQuestion(answerValue)){
+                                    const choiceObj = initChoiceObject(answerValue);
                                     const arrChoices = [choiceObj];
                                     const result = await new Result({
-                                                                    questionID:qId[key],   
+                                                                    questionID:questionID,   
                                                                     _file:_file, 
                                                                     choices:arrChoices,
-                                                                    scenarioTitle:scenarioTitle   
+                                                                    scenarioTitle:scenarioTitle,
+                                                                    totalVotes:1   
                                                             });
                                     await result.save();
                                 }
@@ -138,4 +143,53 @@ const updateResultsWithUserAnswers = async (answers,_file,scenarioTitle)=>{
                             }
                         }
                     }
+}
+
+const initChoiceObject =(answerValue)=>{
+    return _.assign({choiceValue:null,total:0},{choiceValue:answerValue,total:1});
+ 
+}
+
+
+const createNewResultDocument =async(body)=>{
+
+}
+
+//This function checks answer type to see if answer is part of a radio button (binary) question
+// or a checkbox question (non-binary) question
+//input: Number 
+//output: true if input is number, else false
+const isCheckBoxQuestion=(answerValue)=>{
+    return typeof answerValue === "number"
+}
+
+//const {scenarioTitle,answers,_file}=req.body;
+// FileFound.completedScenarios[completedScenarioIdx]=scenario;
+// await FileFound.save();
+// await updateResultsWithUserAnswers(answers,_file,scenarioTitle);
+// res.send(FileFound);
+
+const overwriteAlreadyCompletedScenario = async (FileFound,body)=>{
+
+}
+
+// const file = await new File({
+//     campaignTitle:campaignTitle,
+//     _user:req.user.id,
+//     completedScenarios:completedScenarios
+// });
+// await file.save();
+
+// res.send(file);
+
+const createNewPlayerFile = async (req,res)=>{
+    const {campaignTitle,completedScenarios} = req.body;
+
+        const file = await new File({
+        campaignTitle:campaignTitle,
+        _user:req.user.id,
+        completedScenarios:completedScenarios
+    });
+    await file.save();
+    res.send(file);
 }

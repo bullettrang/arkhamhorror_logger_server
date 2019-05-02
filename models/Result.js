@@ -7,7 +7,8 @@ const resultSchema = new Schema({
     choices:[choiceSchema],
     _file:{type:Schema.Types.ObjectId,ref:"File"},
     multiChoices:multiChoiceSchema,
-    scenarioTitle:String
+    scenarioTitle:String,
+    totalVotes:{type:Number,default:0}
 })
 
 module.exports=resultSchema;
