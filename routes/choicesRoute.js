@@ -22,17 +22,18 @@ module.exports=app=>{
             if(FileFound){
                 //did the user already did this scenario?
                 const completedScenarioIdx = FileFound.completedScenarios.findIndex(sc=>sc.scenarioTitle===scenario.scenarioTitle);
+                const campaignTitle = FileFound.campaignTitle;
                 if(completedScenarioIdx===-1){
                     FileFound.completedScenarios.push(scenario);
                     await FileFound.save();
-                    await updateResultsWithUserAnswers(answers,_file,scenarioTitle);
+                    await updateResultsWithUserAnswers(answers,_file,scenarioTitle,campaignTitle);
                     res.send(FileFound);
 
                 }
                 else{       
                     FileFound.completedScenarios[completedScenarioIdx]=scenario;   //overwrite old scenario within file
                     await FileFound.save();
-                    await updateResultsWithUserAnswers(answers,_file,scenarioTitle);
+                    await updateResultsWithUserAnswers(answers,_file,scenarioTitle,campaignTitle);
                     res.send(FileFound);
                 }
 
@@ -48,17 +49,8 @@ module.exports=app=>{
     })
 
     app.post('/api/submitFile', async (req,res)=>{
-        // const {campaignTitle,completedScenarios} = req.body;
         try{
-                // const file = await new File({
-                //                 campaignTitle:campaignTitle,
-                //                 _user:req.user.id,
-                //                 completedScenarios:completedScenarios
-                //             });
-                // await file.save();
-                
-                // res.send(file);
-                await createNewPlayerFile(req,res);
+            await createNewPlayerFile(req,res);
         }
         catch(error){
             res.status(422).send(error);
@@ -67,8 +59,7 @@ module.exports=app=>{
 
     app.get('/api/user_files',async(req,res)=>{
         try{
-            const files = await File.find({_user:req.user.id});
-            res.send(files);
+            await fetchUserFilesById(req,res);
         }
         catch(err){
             res.status(422).send(err);
@@ -77,9 +68,9 @@ module.exports=app=>{
 
     app.get('/api/results',async(req,res)=>{
         console.log(req.query.scenario);
-        const scenarioTitle=req.query.scenario
+        const campaignTitle=req.query.campaign
         try{
-            const results = await Result.find({scenarioTitle:scenarioTitle});
+            const results = await Result.find({campaignTitle:campaignTitle});   //might change this to search by campaign
             res.send(results);
         }
         catch(err){
@@ -92,7 +83,7 @@ module.exports=app=>{
 //takes in user answers and _file id
 //updates global results of user choices
 //by either updating Result Documents or making new ones if Result documents do not exist yet.  
-const updateResultsWithUserAnswers = async (answers,_file,scenarioTitle)=>{
+const updateResultsWithUserAnswers = async (answers,_file,scenarioTitle,campaignTitle)=>{
     const questionIds = answers.map(ans=> ({questionID:Object.keys(ans)[0]}));
 
                     for(let qId of questionIds){
@@ -103,7 +94,7 @@ const updateResultsWithUserAnswers = async (answers,_file,scenarioTitle)=>{
                                 continue;
                             if(ResultFound){
                                 const answerValue = answers[ansIdx][qId[key]];
-                                if(typeof answerValue ==="number"){
+                                if(isRadioQuestion(answerValue)){
                                     choiceIdx=ResultFound.choices.findIndex(choice=>choice.choiceValue===answerValue)
                                     if(choiceIdx===-1){ //no such choice ever submitted, we will create a new choice schema and push it into Result
                                         const choiceObj = initChoiceObject(answerValue);
@@ -125,7 +116,7 @@ const updateResultsWithUserAnswers = async (answers,_file,scenarioTitle)=>{
                                 //TODO:add support for checkbox type questions
                                 const questionID = qId[key];
                                 const answerValue = answers[ansIdx][questionID];
-                                if(isCheckBoxQuestion(answerValue)){
+                                if(isRadioQuestion(answerValue)){
                                     const choiceObj = initChoiceObject(answerValue);
                                     const arrChoices = [choiceObj];
                                     const result = await new Result({
@@ -133,7 +124,8 @@ const updateResultsWithUserAnswers = async (answers,_file,scenarioTitle)=>{
                                                                     _file:_file, 
                                                                     choices:arrChoices,
                                                                     scenarioTitle:scenarioTitle,
-                                                                    totalVotes:1   
+                                                                    totalVotes:1,
+                                                                    campaignTitle:campaignTitle   
                                                             });
                                     await result.save();
                                 }
@@ -150,38 +142,17 @@ const initChoiceObject =(answerValue)=>{
  
 }
 
-
-const createNewResultDocument =async(body)=>{
-
-}
-
 //This function checks answer type to see if answer is part of a radio button (binary) question
 // or a checkbox question (non-binary) question
 //input: Number 
 //output: true if input is number, else false
-const isCheckBoxQuestion=(answerValue)=>{
+const isRadioQuestion=(answerValue)=>{
     return typeof answerValue === "number"
 }
 
-//const {scenarioTitle,answers,_file}=req.body;
-// FileFound.completedScenarios[completedScenarioIdx]=scenario;
-// await FileFound.save();
-// await updateResultsWithUserAnswers(answers,_file,scenarioTitle);
-// res.send(FileFound);
 
-const overwriteAlreadyCompletedScenario = async (FileFound,body)=>{
-
-}
-
-// const file = await new File({
-//     campaignTitle:campaignTitle,
-//     _user:req.user.id,
-//     completedScenarios:completedScenarios
-// });
-// await file.save();
-
-// res.send(file);
-
+//This function creates a brand new user file and sends it back as response
+//input: req, res
 const createNewPlayerFile = async (req,res)=>{
     const {campaignTitle,completedScenarios} = req.body;
 
@@ -192,4 +163,11 @@ const createNewPlayerFile = async (req,res)=>{
     });
     await file.save();
     res.send(file);
+}
+
+
+//This function fetches user files by their Id and sends the files fetched as a response
+const fetchUserFilesById = async (req,res)=>{
+        const files = await File.find({_user:req.user.id});
+        res.send(files);
 }
