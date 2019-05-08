@@ -80,7 +80,7 @@ module.exports=app=>{
 }
 
 
-//takes in user answers and _file id
+//takes in user answers and _file id, scenarioTitle, and campaignTitle
 //updates global results of user choices
 //by either updating Result Documents or making new ones if Result documents do not exist yet.  
 const updateResultsWithUserAnswers = async (answers,_file,scenarioTitle,campaignTitle)=>{
@@ -109,7 +109,20 @@ const updateResultsWithUserAnswers = async (answers,_file,scenarioTitle,campaign
                                     }
                                 }
                                 else{
-                                    console.log('not a number ',answerValue);
+                                    console.log('updating checkbox Question',answerValue);
+                                    const choiceObjs = getArrayOfChoiceObjects(answerValue);
+                                    const totalPossibleChoices= getTotalPossibleCheckboxAnswers(scenarioTitle);
+                                    ResultFound.totalVotes = ResultFound.totalVotes + totalPossibleChoices;
+
+                                    for(let choice of choiceObjs){
+                                       let choiceIdx= ResultFound.choices.findIndex(ele=>ele.choiceValue===choice.choiceValue);
+                                       if(choiceIdx!==-1){
+                                           ResultFound.choices[choiceIdx].total=ResultFound.choices[choiceIdx].total +1;
+                                       }else{   //creating brand new checkbox choice
+                                           ResultFound.choices.push(choice)
+                                       }
+                                    }
+                                    await ResultFound.save();
                                 }
                             }
                             else{           //create new result
@@ -130,7 +143,20 @@ const updateResultsWithUserAnswers = async (answers,_file,scenarioTitle,campaign
                                     await result.save();
                                 }
                                 else{
-                                    console.log('not a number ',answerValue);
+
+                                   const choiceObjs= getArrayOfChoiceObjects(answerValue);
+                                    const totalPossibleChoices = getTotalPossibleCheckboxAnswers(scenarioTitle);
+
+                                    console.log('choiceObjs for checkboxes ',choiceObjs);
+                                    const result = await new Result({
+                                        questionID:questionID,   
+                                        _file:_file, 
+                                        choices:choiceObjs,
+                                        scenarioTitle:scenarioTitle,
+                                        totalVotes:totalPossibleChoices,
+                                        campaignTitle:campaignTitle   
+                                    });
+                                    await result.save();
                                 }
                             }
                         }
@@ -139,7 +165,12 @@ const updateResultsWithUserAnswers = async (answers,_file,scenarioTitle,campaign
 
 const initChoiceObject =(answerValue)=>{
     return _.assign({choiceValue:null,total:0},{choiceValue:answerValue,total:1});
- 
+}
+
+const getArrayOfChoiceObjects = (answerValue)=>{
+    return answerValue.map(ans=>{
+        return initChoiceObject(ans);
+    });
 }
 
 //This function checks answer type to see if answer is part of a radio button (binary) question
@@ -170,4 +201,15 @@ const createNewPlayerFile = async (req,res)=>{
 const fetchUserFilesById = async (req,res)=>{
         const files = await File.find({_user:req.user.id});
         res.send(files);
+}
+
+const getTotalPossibleCheckboxAnswers=(scenarioTitle)=>{
+    switch(scenarioTitle){
+        case "The Midnight Masks":
+            return 6;
+        case "Blood on the Altar":
+            return 5;
+        default:
+            return 0;
+    }
 }
