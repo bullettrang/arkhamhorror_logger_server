@@ -77,6 +77,17 @@ module.exports=app=>{
             res.status(422).send(err);
         } 
     });
+
+    app.delete('/api/file',async(req,res)=>{
+        const fileId=req.query.fileId;
+        try{
+           await File.deleteOne({_id:fileId});
+           res.send(fileId);
+        }
+        catch(err){
+            res.status(422).send(err);
+        } 
+    });
 }
 
 
