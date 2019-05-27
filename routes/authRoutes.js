@@ -1,8 +1,8 @@
 const passport =require('passport');
 module.exports=app=>{
-    app.get('/',(req,res)=>{
-        res.send({welcome:'ARKHAM LOGGER2'});
-    })
+    // app.get('/',(req,res)=>{
+    //     res.send({welcome:'ARKHAM LOGGER2'});
+    // })
     
     app.get('/auth/google',passport.authenticate('google',{
             scope:['profile','email']
