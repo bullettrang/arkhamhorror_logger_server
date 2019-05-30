@@ -1,0 +1,48 @@
+.DashBoard__Campaigns{
+    margin-bottom:5em;
+    border-radius: 3px;
+    display:flex;
+    padding:5em;
+}
+
+.DashBoard-File{
+     padding:5em;
+    border-radius:3px;
+
+}
+
+.Files_Wrapper{
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    height:auto;
+    padding:1em;
+    flex-wrap:wrap;
+}
+
+.File_Wrapper{
+    display:flex;
+    flex-direction:column; 
+    border-radius:3px;
+    transition:all .2s;
+    margin:1em;
+    cursor: pointer;
+}
+
+.File_Content{
+
+    border-radius:0 0 3px 3px;
+    padding:1em;
+    line-height:2em;
+    min-height:80px;
+}
+
+@media (max-width:500px){
+    
+    .Files_Wrapper{
+        display:flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-top:6rem;
+    }
+}
