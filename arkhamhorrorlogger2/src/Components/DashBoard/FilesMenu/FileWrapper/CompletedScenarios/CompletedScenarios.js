@@ -1,4 +1,4 @@
-import React from '../../../../../../node_modules/react';
+import React from 'react';
 import DevourerBelowSvg from '../../../SVGs/NOZ_SVGS/DevourerBelowSvg';
 import GatheringSvg from '../../../SVGs/NOZ_SVGS/GatheringSvg';
 import MidnightMasksSvg from '../../../SVGs/NOZ_SVGS/MidnightMasksSvg';

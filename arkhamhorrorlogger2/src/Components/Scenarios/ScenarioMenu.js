@@ -1,7 +1,7 @@
-import React,{Component} from '../../../node_modules/react';
-import {connect} from '../../../node_modules/react-redux/lib';
-import {Redirect } from "../../../node_modules/react-router-dom";
-import {uniqBy,xorBy} from '../../../node_modules/lodash/lodash';
+import React,{Component} from 'react';
+import {connect} from 'react-redux';
+import {Redirect } from "react-router-dom";
+import {uniqBy,xorBy} from 'lodash';
 
 import Scenarios from './Scenarios';
 import {NOZ_icons} from '../../constants/icons';

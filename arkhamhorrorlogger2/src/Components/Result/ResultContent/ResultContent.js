@@ -1,5 +1,5 @@
-import React from '../../../../node_modules/react';
-import {groupBy} from '../../../../node_modules/lodash/lodash';
+import React from 'react';
+import {groupBy} from 'lodash';
 import {RESOLUTIONS} from '../../../constants/results';
 import {SCENARIO_IMGS} from  '../../../constants/ScenarioImages';
 import ResultImage from '../ResultImage';

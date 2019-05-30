@@ -1,4 +1,4 @@
-import React from '../../../../../node_modules/react';
+import React from 'react';
 import {RadioButton} from './RadioButton/RadioButton';
 import './RadioButtons.css';
 

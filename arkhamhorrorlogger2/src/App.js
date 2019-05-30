@@ -1,6 +1,6 @@
-import React, { Component } from '../node_modules/react';
-import { Route, Redirect,Switch } from "../node_modules/react-router-dom";
-import {connect} from '../node_modules/react-redux/lib';
+import React, { Component } from 'react';
+import { Route, Redirect,Switch } from "react-router-dom";
+import {connect} from 'react-redux';
 import DashBoard from './Components/DashBoard/DashBoard';
 import CampaignMenu from './Components/Campaign/CampaignMenu';
 import ScenarioMenu from './Components/Scenarios/ScenarioMenu';

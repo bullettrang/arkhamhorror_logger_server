@@ -1,5 +1,5 @@
-import React from '../../../../node_modules/react';
-import shortid from "../../../../node_modules/shortid";  //for animations, need a new key prop to render each animation
+import React from 'react';
+import shortid from "shortid";  //for animations, need a new key prop to render each animation
 import SubmitButton from '../../Forms/Button/SubmitButton';
 import Grid from './Grid/Grid';
 

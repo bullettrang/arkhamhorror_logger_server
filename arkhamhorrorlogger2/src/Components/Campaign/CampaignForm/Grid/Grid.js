@@ -1,4 +1,4 @@
-import React from '../../../../../node_modules/react';
+import React from 'react';
 import {CAMPAIGN_IMAGES} from '../../../../constants/CampaignImages';
 import {getBackgroundStyle} from '../../../../util/styleHelpers';
 import "./Grid.css";

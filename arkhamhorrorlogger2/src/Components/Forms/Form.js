@@ -1,11 +1,12 @@
-import React from '../../../node_modules/react';
-import {Redirect} from '../../../node_modules/react-router-dom';
+import React from 'react';
+import {Redirect} from 'react-router-dom';
+import { connect } from 'react-redux';
+import shortid from "shortid";  //for animations, need a new key prop to render each animation
 import {Question} from './Question/Question';
 import RadioButtonContainer from './RadioButtons/RadioButtonContainer';
 import  CheckBoxesContainer from './CheckBoxes/CheckBoxesContainer';
 import * as actions from '../../actions/index';
-import { connect } from '../../../node_modules/react-redux/lib';
-import shortid from "../../../node_modules/shortid";  //for animations, need a new key prop to render each animation
+
 import "./Form.css";
 
 //maybe change this ...

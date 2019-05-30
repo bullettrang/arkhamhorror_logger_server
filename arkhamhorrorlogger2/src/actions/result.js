@@ -1,5 +1,5 @@
 import {FETCH_RESULTS_START,FETCH_RESULTS_SUCCESS,FETCH_RESULTS_FAIL} from './types';
-import axios from '../../node_modules/axios';
+import axios from 'axios';
 export const fetchResultsStart=()=>{
     return{
         type:FETCH_RESULTS_START

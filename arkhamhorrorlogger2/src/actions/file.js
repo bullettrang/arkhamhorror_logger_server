@@ -1,4 +1,4 @@
-import axios from '../../node_modules/axios';
+import axios from 'axios';
 import {SET_CURRENT_FILE,FETCH_FILES_START,FETCH_FILES_ERROR, FETCH_FILES_SUCCESS,DELETE_FILE_START,DELETE_FILE_ERROR,DELETE_FILE_SUCCESS} from './types';
 
 export const setCurrentFile=(file)=>{

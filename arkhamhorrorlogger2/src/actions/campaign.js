@@ -1,5 +1,5 @@
 import {SET_CAMPAIGN,CREATE_FILE_START,CREATE_FILE_ERROR,CREATE_FILE_SUCCESS,SUBMIT_ANSWERS_START, SUBMIT_ANSWERS_SUCCESS,SUBMIT_ANSWERS_ERROR,NEW_FORM} from './types';
-import axios from '../../node_modules/axios';
+import axios from 'axios';
 import {fetchFiles,setCurrentFile} from './index';
 
 export const setCampaign =(obj)=>{

@@ -1,4 +1,4 @@
-import React from '../../../node_modules/react';
+import React from 'react';
 import Scenario from './Scenario/Scenario';
 import {SCENARIO_IMGS} from '../../constants/ScenarioImages';
 

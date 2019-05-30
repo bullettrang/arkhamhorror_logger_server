@@ -1,8 +1,8 @@
-import React,{Component} from '../../../node_modules/react';
-import {Redirect} from '../../../node_modules/react-router-dom';
-import {connect} from '../../../node_modules/react-redux/lib';
-import shortid from "../../../node_modules/shortid";          //to get rid of annoying key prop warning
-import { Tab, Tabs, TabList, TabPanel } from '../../../node_modules/react-tabs/lib';
+import React,{Component} from 'react';
+import {Redirect} from 'react-router-dom';
+import {connect} from 'react-redux';
+import shortid from "shortid";          //to get rid of annoying key prop warning
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 import {fetchResults,fetchFiles}from  '../../actions/index';
 import './Result.css'

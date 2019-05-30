@@ -1,5 +1,5 @@
 import {RESET_FORM,FINISHED_FORM,FILTER_QUESTIONS,SET_MODE,FETCH_USER,UPDATE_ANSWER} from './types';
-import axios from '../../node_modules/axios';
+import axios from 'axios';
 
 export {
     createFile,

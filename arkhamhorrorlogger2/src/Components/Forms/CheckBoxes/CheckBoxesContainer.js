@@ -1,5 +1,5 @@
-import React,{Component} from '../../../../node_modules/react';
-import { connect} from '../../../../node_modules/react-redux/lib';
+import React,{Component} from 'react';
+import { connect} from 'react-redux';
 import {CheckBoxes} from './CheckBoxes';
 import SubmitButton from '../Button/SubmitButton';
 

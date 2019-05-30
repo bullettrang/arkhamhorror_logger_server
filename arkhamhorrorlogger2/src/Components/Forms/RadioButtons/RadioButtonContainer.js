@@ -1,9 +1,9 @@
-import React,{Component} from '../../../../node_modules/react';
+import React,{Component} from 'react';
 import {RadioButtons} from './RadioButtons/RadioButtons'; 
 
 import SubmitButton from '../Button/SubmitButton';
 import * as actions from '../../../actions/index';
-import {connect} from '../../../../node_modules/react-redux/lib';
+import {connect} from 'react-redux';
 import './RadioButtonContainer.css';
  class RadioButtonContainer extends Component{
 

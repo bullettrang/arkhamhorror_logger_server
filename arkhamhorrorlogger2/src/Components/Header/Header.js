@@ -1,6 +1,6 @@
-import React,{Component} from '../../../node_modules/react';
-import {connect} from '../../../node_modules/react-redux/lib';
-import classnames from "../../../node_modules/classnames";
+import React,{Component} from 'react';
+import {connect} from 'react-redux';
+
 import EldersignSvg from '../DashBoard/SVGs/EldersignSvg';
 import DrawerToggleButton from './DrawerToggleButton';
 import './Header.css';

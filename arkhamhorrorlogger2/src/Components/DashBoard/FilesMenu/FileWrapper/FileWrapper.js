@@ -1,5 +1,5 @@
-import React from '../../../../../node_modules/react';
-import {withRouter} from '../../../../../node_modules/react-router-dom';
+import React from 'react';
+import {withRouter} from 'react-router-dom';
 import CompletedScenarios from './CompletedScenarios/CompletedScenarios';
 import {CAMPAIGN_IMAGES} from '../../../../constants/CampaignImages';
 import DeleteButton from '../../../Forms/Button/DeleteButton';

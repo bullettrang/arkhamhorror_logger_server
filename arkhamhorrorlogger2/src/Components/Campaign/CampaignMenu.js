@@ -1,7 +1,7 @@
-import React,{Component} from '../../../node_modules/react';
-import {connect} from '../../../node_modules/react-redux/lib';
-import {Redirect} from '../../../node_modules/react-router-dom';
-import {assign} from '../../../node_modules/lodash/lodash';
+import React,{Component} from 'react';
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
+import {assign} from 'lodash';
 import CampaignForm from './CampaignForm/CampaignForm';
 import {createFile,setCampaign,submitAnswers,newForm} from '../../actions/index';
 import './CampaignMenu.css';

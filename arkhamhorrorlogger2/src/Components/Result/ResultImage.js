@@ -1,4 +1,4 @@
-import React from '../../../node_modules/react';
+import React from 'react';
 const ResultImage=(props)=>{
     const bgStyled={
         background:`url(${props.picture})`,
