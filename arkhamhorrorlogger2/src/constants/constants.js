@@ -1076,5 +1076,768 @@ export const DATA ={
           }
         ],
       },
+/*
+      *
+      * PATH TO CARCOSA
+      * 
+      */
+
+      "Curtain Call":{
+        title:"Curtain Call",
+        total_questions:5,
+        questions:[
+          {
+            qString:"Agenda reached full doom?",              //Each investigator takes 100 horror (cannot be prevented).
+            type:"radio",
+            id:'PC0101',
+            choices:[
+              {
+                description:"TRUE",
+                value:0
+              },
+              {
+                description:"FALSE",
+                value:1
+              }
+            ],
+            relatedQuestions:{
+              PC0102:1
+            },
+            skipQuestion:false
+          },
+          {
+            qString:"All investigators resigned or defeated",   //t the Stranger is on to you. 
+            type:"radio",                                       //tally The Man in the Pallid Masks defeats
+            id:'PC0102',
+            choices:[
+              {
+                description:"TRUE",
+                value:0
+              },
+              {
+                description:"FALSE",
+                value:1
+              }
+            ],
+            skipQuestion:false
+          },
+          {
+            qString:"How many times was The Man in Pallid Mask defeated?",   //might need to change this to a non radio-type question, maybe a fill in answer
+            type:"radio",                                      
+            id:'PC0103',
+            choices:[
+              {
+                description:"0 times",   
+                value:0
+              },
+              {
+                description:"1 time",                              
+                value:1
+              },
+              {
+                description:"2 times",                              
+                value:2
+              },
+              {
+                description:"3 times",                              
+                value:3
+              },
+              {
+                description:"4 times",                              
+                value:4
+              },
+              {
+                description:"5 times",                              
+                value:5
+              },  
+              {
+                description:"6 times",                              
+                value:6
+              },   
+              {
+                description:"7 times",                              
+                value:7
+              },                  
+            ],
+            skipQuestion:false
+          },
+          {
+            qString:"Did you tell Sheriff Engle what you saw?",
+            type:"radio",
+            id:'PC0104',
+            choices:[
+              {
+                description:"Told Sheriff Engle about the horrors in the theatre.",                 //res1
+                value:0
+              },
+              {
+                description:"Did not tell Sheriff Engle about the horrors in the theatre.",      //res 2
+                value:1
+              }
+            ],
+          },
+          {
+            qString:"Did you steal from the box office?",
+            type:"radio",
+            id:'PC0105',
+            choices:[
+              {
+                description:"Stole from the box office.",       //the police are suspicious of you. 
+                value:0
+              },
+              {
+                description:"Did not steal from the box office.",                
+                value:1
+              }
+            ],
+            skipQuestion:false
+          }
+        ],
+      },
+      "The Last King":{
+        title:"The Last King",
+        total_questions:6,
+        questions:[
+          {
+            qString:"Agenda reached full doom?",              //  R3
+            type:"radio",
+            id:'PC0201',
+            choices:[
+              {
+                description:"TRUE",
+                value:0
+              },
+              {
+                description:"FALSE",
+                value:1
+              }
+            ],
+            relatedQuestions:{
+              PC0202:1
+            },
+            skipQuestion:false
+          },
+          {
+            qString:"All investigators resigned or defeated?",   //Morgan WAS KIDNAPPED, 
+            type:"radio",                                       //FAILED TO SAVE THE STUDENTS
+            id:'PC0202',
+            choices:[
+              {
+                description:"TRUE",   //R2
+                value:0
+              },
+              {
+                description:"FALSE",
+                value:1
+              }
+            ],
+            skipQuestion:false,
+          },
+          {
+            qString:"No resolution reached, and at least 1 investigator resigned? ",    
+            type:"radio",                                       
+            id:'PC0203',
+            choices:[
+              {
+                description:"YES",      //R1
+                value:0
+              },
+              {
+                description:"NO",
+                value:1
+              }
+            ],
+            relatedQuestions:{
+              PC0206:0
+            },
+            skipQuestion:false
+          },
+          {
+            qString:"VIPs Interviewed ",
+            type:"checkbox",
+            id:'PC0204',
+            choices:[
+              {
+                description:"Constance Dumaine",      
+                value:0
+              },
+              {
+                description:"Jordan Perry",                 
+                value:1
+              },
+              {
+                description:"Ishimaru Haruko",                 
+                value:2
+              },
+              {
+                description:"Sebastien Moreau",                 
+                value:3
+              },
+              {
+                description:"Ashleigh Clarke",                  
+                value:4
+              }
+            ],
+            skipQuestion:false
+          },    
+          {
+            qString:"VIPs slained ",
+            type:"checkbox",
+            id:'PC0205',
+            choices:[                           //need to filter choices from PC0204
+              {
+                description:"Constance Dumaine",      
+                value:0
+              },
+              {
+                description:"Jordan Perry",                 
+                value:1
+              },
+              {
+                description:"Ishimaru Haruko",                 
+                value:2
+              },
+              {
+                description:"Sebastien Moreau",                 
+                value:3
+              },
+              {
+                description:"Ashleigh Clarke",                  
+                value:4
+              }
+            ],
+            skipQuestion:false
+          },
+          {
+            qString:"Which Lunacy reward did you choose?",
+            type:"radio",
+            id:'PC0206',
+            choices:[
+              {
+                description:"Lunacy reward 1",      
+                value:0
+              },
+              {
+                description:"Lunacy reward 2",                
+                value:1
+              },
+              {
+                description:"Lunacy reward 3",                
+                value:2
+              }
+            ],
+            skipQuestion:false
+          }
+        ],
+      },
+      "The Miskatonic Museum":{
+        title:"The Miskatonic Museum",
+        total_questions:4,
+        questions:[
+          {
+            qString:"Agenda reached full doom?",              //failed to retrieve necronomicon
+            type:"radio",
+            id:'DW0301',
+            choices:[
+              {
+                description:"TRUE",
+                value:0
+              },
+              {
+                description:"FALSE",
+                value:1
+              }
+            ],
+            skipQuestion:false,
+            relatedQuestions:{
+
+            }
+          },
+          {
+            qString:"All investigators resigned or defeated",   //failed to retrieve necronomicon
+            type:"radio",                                       
+            id:'DW0302',
+            choices:[
+              {
+                description:"TRUE",
+                value:0
+              },
+              {
+                description:"FALSE",
+                value:1
+              }
+            ],
+            skipQuestion:false,
+          },
+          {
+            qString:"How did you get into the Miskatonic Museum? ",    
+            type:"radio",                                       
+            id:'DW0303',
+            choices:[
+              {
+                description:"Convince security guard \"Adam Lynch\" to let you in",   
+                value:0
+              },
+              {
+                description:"Broke down the front door",                              //this leads to Adam Lynch dying, Harold Walstead is gained
+                value:1
+              }
+            ],
+            relatedQuestions:{
+              DW0305:0,
+              DW0306:1
+            },
+            skipQuestion:false,
+          },
+          {
+            qString:"Did you.... ",
+            type:"radio",
+            id:'DW0304',
+            choices:[
+              {
+                description:"Find and KEEP the necronomicon",      //R2
+                value:0
+              },
+              {
+                description:"Destroyed the necronomicon",                 //show this option only if HAW is first
+                value:1
+              }
+            ],
+            skipQuestion:false,
+          },
+          {
+            qString:"Did Adam Lynch die? ",             //if DW0303 is 0, we ask this question
+            type:"radio",
+            id:'DW0305',
+            choices:[
+              {
+                description:"TRUE",      
+                value:0
+              },
+              {
+                description:"FALSE",                 
+                value:1
+              }
+            ],
+            skipQuestion:false,
+          },
+          {
+            qString:"Did Harold Walsted die? ",             //if DW0303 is 1, we ask this question
+            type:"radio",
+            id:'DW0306',
+            choices:[
+              {
+                description:"TRUE",      
+                value:0
+              },
+              {
+                description:"FALSE",                 
+                value:1
+              }
+            ],
+            skipQuestion:false,
+          }
+        ],
+      },
+      "The Essex County Express":{
+        title:"The Essex County Express",
+        total_questions:4,
+        questions:[
+          {
+            qString:"Agenda reached full doom?",              
+            type:"radio",
+            id:'DW0401',
+            choices:[
+              {
+                description:"TRUE",
+                value:0
+              },
+              {
+                description:"FALSE",
+                value:1
+              }
+            ],
+            skipQuestion:false,
+            relatedQuestions:{
+              DW0402:0,     //NOTE: this breaks typical pattern
+              DW0404:1
+            }
+          },
+          {
+            qString:"All investigators resigned or defeated",   //todo, check necronomicon
+            type:"radio",                                       
+            id:'DW0402',
+            choices:[
+              {
+                description:"TRUE",
+                value:0
+              },
+              {
+                description:"FALSE",
+                value:1
+              }
+            ],
+            skipQuestion:false,
+            relatedQuestions:{
+              DW0404:1
+            }
+          },
+          {
+            qString:"Did you steal the luggage?",    
+            type:"radio",                                       
+            id:'DW0403',
+            choices:[
+              {
+                description:"Stole passenger luggage",   
+                value:0
+              },
+              {
+                description:"Didn't take passenger luggage",                              //this leads to Adam Lynch dying, Harold Walstead is gained
+                value:1
+              }
+            ],
+            skipQuestion:false,
+          },
+          {
+            qString:"How many helpless passengers perished?",
+            type:"radio",
+            id:'DW0405',
+            choices:[
+              {
+                description:"0 passengers",     
+                value:0
+              },
+              {
+                description:"1 passengers",                 
+                value:1
+              },
+              {
+                description:"2 passengers",                 
+                value:2
+              },
+              {
+                description:"3 passengers",                 
+                value:3
+              }
+
+            ],
+            skipQuestion:false,
+          },
+          {
+            qString:"Did you manage to restart the engine? ",
+            type:"radio",
+            id:'DW0404',
+            choices:[
+              {
+                description:"Restarted the engine.",      
+                value:0
+              },
+              {
+                description:"Failed to restart the engine",                 //show this option only if HAW is first
+                value:1
+              }
+            ],
+            skipQuestion:false,
+          },
+        ],
+      },
+      "Blood on the Altar":{
+        title:"Blood on the Altar",
+        total_questions:4,
+        questions:[
+          {
+            qString:"Agenda reached full doom?",              //if 0, R2
+            type:"radio",
+            id:'DW0501',
+            choices:[
+              {
+                description:"TRUE",
+                value:0
+              },
+              {
+                description:"FALSE",
+                value:1
+              }
+            ],
+            skipQuestion:false,
+            relatedQuestions:{
+              DW0502:1
+            }
+          },
+          {
+            qString:"All investigators resigned or defeated",         //todo, check necronomicon
+            type:"radio",                                       
+            id:'DW0502',
+            choices:[
+              {
+                description:"TRUE",
+                value:0
+              },
+              {
+                description:"FALSE",
+                value:1
+              }
+            ],
+            skipQuestion:false, 
+            relatedQuestions:{
+              DW0503:1,
+              DW0504:1
+            }
+          },
+          {
+            qString:"Did you.....",    
+            type:"radio",                                       
+            id:'DW0503',
+            choices:[
+              {
+                description:"Put Silas Bishop out of his misery",   
+                value:0
+              },
+              {
+                description:"Found another way...",                              //this leads to Adam Lynch dying, Harold Walstead is gained
+                value:1
+              }
+            ],
+            relatedQuestions:{
+              DW0504:1
+            },
+            skipQuestion:false,
+          },
+          {
+            qString:"Instead of putting Silas to death...",
+            type:"radio",
+            id:'DW0504',
+            choices:[
+              {
+                description:"Banish Silas Bishop with the journal found",      //R2
+                value:0
+              },
+              {
+                description:"Restored Silas Bishop with Necronomicon",                 //show this option only if HAW is first
+                value:1
+              }
+            ],
+            skipQuestion:false,
+          },
+          {
+            qString:"Check off all who were sacrificed to Yog-Sothoth ",             //if DW0303 is 0, we ask this question
+            type:"checkbox",                                                        // todo check if Dr. Morgan/Dr.Rice/Dr.Armitage was kidnapped
+            id:'DW0505',
+            choices:[
+              {
+                description:"Zebulon Whateley",      
+                value:0
+              },
+              {
+                description:"Earl Sawyer",                 
+                value:1
+              },
+              {
+                description:"Dr. Armitage",                 
+                value:2
+              },
+              {
+                description:"Dr.Morgan",                //check DW0204    
+                value:3
+              },
+              {
+                description:"Dr.Rice",                  //DW0104   
+                value:4
+              }
+            ],
+            skipQuestion:false,
+          }
+        ],
+      },
+      "Undimensioned and Unseen":{
+        title:"Undimensioned and Unseen",
+        total_questions:3,
+        questions:[
+          {
+            qString:"Agenda reached full doom?",              //if 0, R2
+            type:"radio",
+            id:'DW0601',
+            choices:[
+              {
+                description:"TRUE",
+                value:0
+              },
+              {
+                description:"FALSE",
+                value:1
+              }
+            ],
+            skipQuestion:false,
+            relatedQuestions:{
+              DW0602:1
+            }
+          },
+          {
+            qString:"All investigators resigned or defeated",         //todo, check necronomicon
+            type:"radio",                                       
+            id:'DW0602',
+            choices:[
+              {
+                description:"TRUE",
+                value:0
+              },
+              {
+                description:"FALSE",
+                value:1
+              }
+            ],
+            skipQuestion:false
+          },
+          {
+            qString:"How many broods escaped?",    
+            type:"radio",                                       
+            id:'DW0603',
+            choices:[
+              {
+                description:"0 Broods escaped",   
+                value:0
+              },
+              {
+                description:"1 Brood escaped",                              //this leads to Adam Lynch dying, Harold Walstead is gained
+                value:1
+              },
+              {
+                description:"2 Broods escaped",                              //this leads to Adam Lynch dying, Harold Walstead is gained
+                value:2
+              },
+              {
+                description:"3 Broods escaped",                              //this leads to Adam Lynch dying, Harold Walstead is gained
+                value:3
+              },
+              {
+                description:"4 Broods escaped",                              //this leads to Adam Lynch dying, Harold Walstead is gained
+                value:4
+              },
+              {
+                description:"5 Broods escaped",                              //this leads to Adam Lynch dying, Harold Walstead is gained
+                value:5
+              },                                     
+            ],
+            skipQuestion:false,
+          }
+        ],
+      },
+      "Where Doom Awaits":{
+        title:"Where Doom Awaits",
+        total_questions:3,
+        questions:[
+          {
+            qString:"Agenda reached full doom?",              //if 0, R2
+            type:"radio",
+            id:'DW0701',
+            choices:[
+              {
+                description:"TRUE",
+                value:0
+              },
+              {
+                description:"FALSE",
+                value:1
+              }
+            ],
+            skipQuestion:false,
+            relatedQuestions:{
+              DW0702:1
+            }
+          },
+          {
+            qString:"All investigators resigned or defeated",         
+            type:"radio",                                       
+            id:'DW0702',
+            choices:[
+              {
+                description:"TRUE",
+                value:0
+              },
+              {
+                description:"FALSE",
+                value:1
+              }
+            ],
+            skipQuestion:false
+          },
+          {
+            qString:"Was Seth Bishop defeated?",         
+            type:"radio",                                       
+            id:'DW0703',
+            choices:[
+              {
+                description:"TRUE",
+                value:0
+              },
+              {
+                description:"FALSE",
+                value:1
+              }
+            ],
+            skipQuestion:false
+          }
+        ],
+      },
+      "Lost in Time and Space":{
+        title:"Lost in Time and Space",
+        total_questions:3,
+        questions:[
+          {
+            qString:"All investigators resigned or defeated",         
+            type:"radio",                                       
+            id:'DW0801',
+            choices:[
+              {
+                description:"TRUE",
+                value:0
+              },
+              {
+                description:"FALSE",
+                value:1
+              }
+            ],
+            skipQuestion:false,
+            relatedQuestions:{
+              DW0802:0,
+              DW0803:1
+            }
+          },
+          {
+            qString:"Did the investigators reach Act 4?",         
+            type:"radio",                                       
+            id:'DW0802',
+            choices:[
+              {
+                description:"TRUE",
+                value:0
+              },
+              {
+                description:"FALSE",
+                value:1
+              }
+            ],
+            skipQuestion:false,
+          },
+          {
+            qString:"Did the investigators defeat Yog-Sothoth?",         
+            type:"radio",                                       
+            id:'DW0803',
+            choices:[
+              {
+                description:"TRUE",
+                value:0
+              },
+              {
+                description:"FALSE",
+                value:1
+              }
+            ],
+            skipQuestion:false,
+          }
+        ],
+      },
+
+      
   }
 
