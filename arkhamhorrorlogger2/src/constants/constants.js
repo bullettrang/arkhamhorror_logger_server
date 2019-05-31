@@ -1218,8 +1218,8 @@ export const DATA ={
             skipQuestion:false
           },
           {
-            qString:"All investigators resigned or defeated?",   //Morgan WAS KIDNAPPED, 
-            type:"radio",                                       //FAILED TO SAVE THE STUDENTS
+            qString:"All investigators resigned or defeated?",    
+            type:"radio",                                       
             id:'PC0202',
             choices:[
               {
@@ -1329,15 +1329,15 @@ export const DATA ={
             skipQuestion:false
           }
         ],
-      },
-      "The Miskatonic Museum":{
-        title:"The Miskatonic Museum",
+      },      //TODO : ADD REST OF THE PATH TO CARCOSA SCENARIOS
+      "Echoes of the Past":{
+        title:"Echoes of the Past",
         total_questions:4,
         questions:[
           {
-            qString:"Agenda reached full doom?",              //failed to retrieve necronomicon
+            qString:"Agenda reached full doom?",              //R4
             type:"radio",
-            id:'DW0301',
+            id:'PC0301',
             choices:[
               {
                 description:"TRUE",
@@ -1350,13 +1350,13 @@ export const DATA ={
             ],
             skipQuestion:false,
             relatedQuestions:{
-
+              PC0301:1
             }
           },
           {
-            qString:"All investigators resigned or defeated",   //failed to retrieve necronomicon
+            qString:"All investigators resigned or defeated",   //R4, the followers of the sign have found the way forward.
             type:"radio",                                       
-            id:'DW0302',
+            id:'PC0302',
             choices:[
               {
                 description:"TRUE",
@@ -1370,86 +1370,53 @@ export const DATA ={
             skipQuestion:false,
           },
           {
-            qString:"How did you get into the Miskatonic Museum? ",    
+            qString:"Did you defeat Possessed Oathspeaker? ",    
             type:"radio",                                       
-            id:'DW0303',
+            id:'PC0303',
             choices:[
               {
-                description:"Convince security guard \"Adam Lynch\" to let you in",   
+                description:"Defeated Possessed Oathspeaker.",               //R3, destroyed OathSpeaker,
                 value:0
               },
               {
-                description:"Broke down the front door",                              //this leads to Adam Lynch dying, Harold Walstead is gained
+                description:"Did not defeat Possessed Oathspeaker.",                             
                 value:1
               }
             ],
             relatedQuestions:{
-              DW0305:0,
-              DW0306:1
+              PC0304:1
             },
             skipQuestion:false,
           },
           {
-            qString:"Did you.... ",
-            type:"radio",
-            id:'DW0304',
+            qString:"Did you take the Clasp of Black Onyx? ",    
+            type:"radio",                                       
+            id:'PC0304',
             choices:[
               {
-                description:"Find and KEEP the necronomicon",      //R2
+                description:"Stole the Clasp of Black Onyx.",               //R1
                 value:0
               },
               {
-                description:"Destroyed the necronomicon",                 //show this option only if HAW is first
-                value:1
-              }
-            ],
-            skipQuestion:false,
-          },
-          {
-            qString:"Did Adam Lynch die? ",             //if DW0303 is 0, we ask this question
-            type:"radio",
-            id:'DW0305',
-            choices:[
-              {
-                description:"TRUE",      
-                value:0
-              },
-              {
-                description:"FALSE",                 
-                value:1
-              }
-            ],
-            skipQuestion:false,
-          },
-          {
-            qString:"Did Harold Walsted die? ",             //if DW0303 is 1, we ask this question
-            type:"radio",
-            id:'DW0306',
-            choices:[
-              {
-                description:"TRUE",      
-                value:0
-              },
-              {
-                description:"FALSE",                 
+                description:"Did not take Clasp of Black Onyx",                              //R2
                 value:1
               }
             ],
             skipQuestion:false,
           }
-        ],
+        ]
       },
-      "The Essex County Express":{
-        title:"The Essex County Express",
-        total_questions:4,
+      "The Unspeakable Oath":{
+        title:"The Unspeakable Oath",
+        total_questions:6,
         questions:[
           {
             qString:"Agenda reached full doom?",              
             type:"radio",
-            id:'DW0401',
+            id:'PC0401',
             choices:[
               {
-                description:"TRUE",
+                description:"TRUE",             //R1, King claimed his victims
                 value:0
               },
               {
@@ -1457,19 +1424,15 @@ export const DATA ={
                 value:1
               }
             ],
-            skipQuestion:false,
-            relatedQuestions:{
-              DW0402:0,     //NOTE: this breaks typical pattern
-              DW0404:1
-            }
+            skipQuestion:false
           },
           {
-            qString:"All investigators resigned or defeated",   //todo, check necronomicon
+            qString:"All investigators resigned or defeated",   //
             type:"radio",                                       
-            id:'DW0402',
+            id:'PC0402',
             choices:[
               {
-                description:"TRUE",
+                description:"TRUE",                           //R1
                 value:0
               },
               {
@@ -1477,68 +1440,100 @@ export const DATA ={
                 value:1
               }
             ],
-            skipQuestion:false,
-            relatedQuestions:{
-              DW0404:1
-            }
+            skipQuestion:false
           },
           {
-            qString:"Did you steal the luggage?",    
+            qString:"How did you retrieve the keys?",    
             type:"radio",                                       
-            id:'DW0403',
+            id:'PC0403',
             choices:[
               {
-                description:"Stole passenger luggage",   
+                description:"Intimidated the nurse into handing over the keys.",   
                 value:0
               },
               {
-                description:"Didn't take passenger luggage",                              //this leads to Adam Lynch dying, Harold Walstead is gained
-                value:1
-              }
-            ],
-            skipQuestion:false,
-          },
-          {
-            qString:"How many helpless passengers perished?",
-            type:"radio",
-            id:'DW0405',
-            choices:[
-              {
-                description:"0 passengers",     
-                value:0
-              },
-              {
-                description:"1 passengers",                 
+                description:"Stole the keys.",                              
                 value:1
               },
               {
-                description:"2 passengers",                 
+                description:"Persuaded the nurse into handing over the keys.",                              //this leads to Adam Lynch dying, Harold Walstead is gained
                 value:2
               },
               {
-                description:"3 passengers",                 
-                value:3
-              }
-
+                description:"Took the nurse's keys by force",                              //this leads to Adam Lynch dying, Harold Walstead is gained
+                value:2
+              }              
             ],
             skipQuestion:false,
           },
           {
-            qString:"Did you manage to restart the engine? ",
-            type:"radio",
-            id:'DW0404',
+            qString:"How did you plan the escape?",
+            type:"checkbox",      //only 4 choices allowed
+            id:'PC0404',
             choices:[
               {
-                description:"Restarted the engine.",      
+                description:"Released the dangerous patient",     
                 value:0
               },
               {
-                description:"Failed to restart the engine",                 //show this option only if HAW is first
+                description:"Understood the patient's ravings, learned the guards' patrols.",                 
+                value:1
+              },
+              {
+                description:"Recognized the familiar cell, you recalled the way out. ",                 
+                value:2
+              },
+              {
+                description:"You set the kitchen on fire.",                 
+                value:3
+              },
+              {
+                description:"Incited a fight among the patients.",                 
+                value:4
+              }, 
+              {
+                description:"Distracted the two guards. ",                 
+                value:5
+              },   
+            ],
+            skipQuestion:false
+          },
+          {
+            qString:"Fate of Daniel Chesterfield?",
+            type:"radio",      
+            id:'PC0405',
+            choices:[
+              {
+                description:"Daniel survived. (Ally version in play) ",     
+                value:0
+              },
+              {
+                description:"Daniel was Possessed. (Lunatic version in play)",                 
+                value:1
+              },
+              {
+                description:"Daniel did not survive. (Neither version of Daniel Chesterfield in play)",                 
+                value:2
+              } 
+            ],
+            skipQuestion:false
+          },       
+          {
+            qString:"Did you listen to Daniel Chesterfield's warning?",
+            type:"radio",      
+            id:'PC0406',
+            choices:[
+              {
+                description:"Ignored his warnings.",     
+                value:0
+              },
+              {
+                description:"You heed Daniel Chesterfield's warning. Do not speak of the King in Yellow's name.",                 
                 value:1
               }
             ],
-            skipQuestion:false,
-          },
+            skipQuestion:false
+          }               
         ],
       },
       "Blood on the Altar":{
