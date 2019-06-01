@@ -1167,11 +1167,11 @@ export const DATA ={
             id:'PC0104',
             choices:[
               {
-                description:"Told Sheriff Engle about the horrors in the theatre.",                 //res1
+                description:"Told Sheriff Engle about the horrors in the theatre.",                 //+1 CONVICTION
                 value:0
               },
               {
-                description:"Did not tell Sheriff Engle about the horrors in the theatre.",      //res 2
+                description:"Did not tell Sheriff Engle about the horrors in the theatre.",      //res 2  //+1 DOUBT
                 value:1
               }
             ],
@@ -1314,15 +1314,15 @@ export const DATA ={
             id:'PC0206',
             choices:[
               {
-                description:"Lunacy reward 1",      
+                description:"Lunacy reward 1",            //intruded on a secret meeting,  //+1 DOUBT
                 value:0
               },
               {
-                description:"Lunacy reward 2",                
+                description:"Lunacy reward 2",            //fled the dinner party,
                 value:1
               },
               {
-                description:"Lunacy reward 3",                
+                description:"Lunacy reward 3",           //slayed the monsters of the dinner party , update all VIPS to slain //+1 CONVICTION
                 value:2
               }
             ],
@@ -1394,11 +1394,11 @@ export const DATA ={
             id:'PC0304',
             choices:[
               {
-                description:"Stole the Clasp of Black Onyx.",               //R1
+                description:"Stole the Clasp of Black Onyx.",               //R1, +1 CONVICTION
                 value:0
               },
               {
-                description:"Did not take Clasp of Black Onyx",                              //R2
+                description:"Did not take Clasp of Black Onyx",                              //R2, +1 DOUBT
                 value:1
               }
             ],
@@ -1456,11 +1456,11 @@ export const DATA ={
                 value:1
               },
               {
-                description:"Persuaded the nurse into handing over the keys.",                              //this leads to Adam Lynch dying, Harold Walstead is gained
+                description:"Persuaded the nurse into handing over the keys.",                              
                 value:2
               },
               {
-                description:"Took the nurse's keys by force",                              //this leads to Adam Lynch dying, Harold Walstead is gained
+                description:"Took the nurse's keys by force",                              
                 value:2
               }              
             ],
@@ -1524,11 +1524,11 @@ export const DATA ={
             id:'PC0406',
             choices:[
               {
-                description:"Ignored his warnings.",     
+                description:"Ignored his warnings.",     //+2 DOUBT 
                 value:0
               },
               {
-                description:"You heed Daniel Chesterfield's warning. Do not speak of the King in Yellow's name.",                 
+                description:"You heed Daniel Chesterfield's warning. Do not speak of the King in Yellow's name.",           //+2 CONVICTION       
                 value:1
               }
             ],
@@ -1536,18 +1536,18 @@ export const DATA ={
           }               
         ],
       },
-      "Blood on the Altar":{
-        title:"Blood on the Altar",
-        total_questions:4,
+      "A Phantom of Truth":{
+        title:"A Phantom of Truth",
+        total_questions:3,
         questions:[
           {
-            qString:"Agenda reached full doom?",              //if 0, R2
+            qString:"Agenda reached full doom?",              
             type:"radio",
-            id:'DW0501',
+            id:'PC0501',
             choices:[
               {
-                description:"TRUE",
-                value:0
+                description:"TRUE",             //need to check conviction and doubt
+                value:0                         //you did not escape   the gaze of the phantom.
               },
               {
                 description:"FALSE",
@@ -1556,20 +1556,20 @@ export const DATA ={
             ],
             skipQuestion:false,
             relatedQuestions:{
-              DW0502:1
+              PC0502:1
             }
           },
           {
-            qString:"All investigators resigned or defeated",         //todo, check necronomicon
+            qString:"All investigators resigned or defeated",         
             type:"radio",                                       
-            id:'DW0502',
+            id:'PC0502',
             choices:[
               {
                 description:"TRUE",
                 value:0
               },
               {
-                description:"FALSE",
+                description:"FALSE",                   //NEED TO CHECK PC0206, IF IT HAS AN ANSWER OF 1,
                 value:1
               }
             ],
@@ -1582,79 +1582,55 @@ export const DATA ={
           {
             qString:"Did you.....",    
             type:"radio",                                       
-            id:'DW0503',
+            id:'PC0503',
             choices:[
               {
-                description:"Put Silas Bishop out of his misery",   
+                description:"Find Nigel's home?",   
                 value:0
               },
               {
-                description:"Found another way...",                              //this leads to Adam Lynch dying, Harold Walstead is gained
-                value:1
-              }
-            ],
-            relatedQuestions:{
-              DW0504:1
-            },
-            skipQuestion:false,
-          },
-          {
-            qString:"Instead of putting Silas to death...",
-            type:"radio",
-            id:'DW0504',
-            choices:[
-              {
-                description:"Banish Silas Bishop with the journal found",      //R2
-                value:0
-              },
-              {
-                description:"Restored Silas Bishop with Necronomicon",                 //show this option only if HAW is first
-                value:1
-              }
-            ],
-            skipQuestion:false,
-          },
-          {
-            qString:"Check off all who were sacrificed to Yog-Sothoth ",             //if DW0303 is 0, we ask this question
-            type:"checkbox",                                                        // todo check if Dr. Morgan/Dr.Rice/Dr.Armitage was kidnapped
-            id:'DW0505',
-            choices:[
-              {
-                description:"Zebulon Whateley",      
-                value:0
-              },
-              {
-                description:"Earl Sawyer",                 
+                description:"Find Nigel Engram himself?",                              //this leads to Adam Lynch dying, Harold Walstead is gained
                 value:1
               },
               {
-                description:"Dr. Armitage",                 
+                description:"Could not find Nigel Engram.",                              //this leads to Adam Lynch dying, Harold Walstead is gained
                 value:2
-              },
-              {
-                description:"Dr.Morgan",                //check DW0204    
-                value:3
-              },
-              {
-                description:"Dr.Rice",                  //DW0104   
-                value:4
-              }
+              }              
             ],
             skipQuestion:false,
           }
         ],
       },
-      "Undimensioned and Unseen":{
-        title:"Undimensioned and Unseen",
+      "The Pallid Mask":{
+        title:"The Pallid Mask",
         total_questions:3,
         questions:[
           {
-            qString:"Agenda reached full doom?",              //if 0, R2
+            qString:"Did you wake up in the catacombs?",             
             type:"radio",
-            id:'DW0601',
+            id:'PC0601',
             choices:[
               {
-                description:"TRUE",
+                description:"Yes, woke up inside the catacombs",
+                value:0
+              },
+              {
+                description:"No, entered catacombs by choice.",
+                value:1
+              }
+            ],
+            skipQuestion:false,
+            relatedQuestions:{
+              DW0602:1
+            }
+          },
+          {
+            qString:"Agenda reached full doom?",              
+            type:"radio",
+            id:'PC0602',
+            choices:[
+              {
+                description:"TRUE",               //you know the site of the gate
                 value:0
               },
               {
@@ -1670,7 +1646,7 @@ export const DATA ={
           {
             qString:"All investigators resigned or defeated",         //todo, check necronomicon
             type:"radio",                                       
-            id:'DW0602',
+            id:'PC0602',
             choices:[
               {
                 description:"TRUE",
