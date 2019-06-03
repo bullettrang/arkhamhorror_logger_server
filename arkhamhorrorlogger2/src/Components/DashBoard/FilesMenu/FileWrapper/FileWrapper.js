@@ -34,16 +34,18 @@ const FileWrapper = (props)=>{
 
     const styledWrapped={
         opacity:".8",
-        transition:'opacity 300ms linear,transform 300ms cubic-bezier(0.455,0.03,0.515,0.955)'
+        transition:'opacity 300ms linear,transform 300ms cubic-bezier(0.455,0.03,0.515,0.955)',
+        boxShadow:  '0px 2px 2px  rgba(0,0,0,0.6)',
+        MozBoxShadow:    '0px 2px 2px  rgba(0,0,0,0.6)',
+        WebkitBox: '0px 2px 2px  rgba(0,0,0,0.6)',
     }
     
     const  styledWrappedSelected={
         transform:"scale(1.1)",
-        MozBoxShadow:    '0px 5px 5px  #000',
-        WebkitBox: '0px 5px 5px  #000',
-        boxShadow:  '0px 5px 5px  #000',
-        opacity:"1",
-        transition:'opacity 300ms linear,transform 300ms cubic-bezier(0.455,0.03,0.515,0.955)'
+        opacity:"1",        //added box-shadow animation to stylesheet
+        transition:'opacity 300ms ease-in-out,transform 300ms cubic-bezier(0.455,0.03,0.515,0.955)',
+        boxShadow:  "0px 5px 5px  rgba(0,0,0,0.3)"
+        // transition:'transform 300ms cubic-bezier(0.455,0.03,0.515,0.955)'
     }
 
     if(selected===id){

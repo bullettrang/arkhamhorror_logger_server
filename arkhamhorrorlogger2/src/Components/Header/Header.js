@@ -7,10 +7,6 @@ import './Header.css';
 
 class Header extends Component{
 
-    constructor(props) {
-        super(props);
-
-      }
 
 
     render(){

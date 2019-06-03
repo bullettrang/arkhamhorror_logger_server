@@ -49,10 +49,8 @@ class App extends Component {
   }
 
 
-  scrollHandler =()=>{
-    
+  scrollHandler =()=>{ 
     const { prevScrollpos } = this.state;
-
     const currentScrollPos = this.myref.current.scrollTop;
     const visible = prevScrollpos > currentScrollPos;
     if(this.myref){

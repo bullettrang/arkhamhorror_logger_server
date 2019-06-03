@@ -84,7 +84,7 @@ class FilesMenu extends Component{
         this.props.deleteByFileId(fileid);
     }
     render(){
-        const {toScenario,selected,title}= this.state;
+        const {toScenario,title}= this.state;
 
         if(toScenario){
             return <Redirect to="scenario"/>

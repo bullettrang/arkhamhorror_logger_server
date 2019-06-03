@@ -1601,213 +1601,181 @@ export const DATA ={
           }
         ],
       },
-      "The Pallid Mask":{
-        title:"The Pallid Mask",
-        total_questions:3,
-        questions:[
-          {
-            qString:"Did you wake up in the catacombs?",             
-            type:"radio",
-            id:'PC0601',
-            choices:[
-              {
-                description:"Yes, woke up inside the catacombs",
-                value:0
-              },
-              {
-                description:"No, entered catacombs by choice.",
-                value:1
-              }
-            ],
-            skipQuestion:false,
-            relatedQuestions:{
-              DW0602:1
-            }
-          },
-          {
-            qString:"Agenda reached full doom?",              
-            type:"radio",
-            id:'PC0602',
-            choices:[
-              {
-                description:"TRUE",               //you know the site of the gate
-                value:0
-              },
-              {
-                description:"FALSE",
-                value:1
-              }
-            ],
-            skipQuestion:false,
-            relatedQuestions:{
-              DW0602:1
-            }
-          },
-          {
-            qString:"All investigators resigned or defeated",         //todo, check necronomicon
-            type:"radio",                                       
-            id:'PC0602',
-            choices:[
-              {
-                description:"TRUE",
-                value:0
-              },
-              {
-                description:"FALSE",
-                value:1
-              }
-            ],
-            skipQuestion:false
-          },
-          {
-            qString:"How many broods escaped?",    
-            type:"radio",                                       
-            id:'DW0603',
-            choices:[
-              {
-                description:"0 Broods escaped",   
-                value:0
-              },
-              {
-                description:"1 Brood escaped",                              //this leads to Adam Lynch dying, Harold Walstead is gained
-                value:1
-              },
-              {
-                description:"2 Broods escaped",                              //this leads to Adam Lynch dying, Harold Walstead is gained
-                value:2
-              },
-              {
-                description:"3 Broods escaped",                              //this leads to Adam Lynch dying, Harold Walstead is gained
-                value:3
-              },
-              {
-                description:"4 Broods escaped",                              //this leads to Adam Lynch dying, Harold Walstead is gained
-                value:4
-              },
-              {
-                description:"5 Broods escaped",                              //this leads to Adam Lynch dying, Harold Walstead is gained
-                value:5
-              },                                     
-            ],
-            skipQuestion:false,
-          }
-        ],
-      },
-      "Where Doom Awaits":{
-        title:"Where Doom Awaits",
-        total_questions:3,
-        questions:[
-          {
-            qString:"Agenda reached full doom?",              //if 0, R2
-            type:"radio",
-            id:'DW0701',
-            choices:[
-              {
-                description:"TRUE",
-                value:0
-              },
-              {
-                description:"FALSE",
-                value:1
-              }
-            ],
-            skipQuestion:false,
-            relatedQuestions:{
-              DW0702:1
-            }
-          },
-          {
-            qString:"All investigators resigned or defeated",         
-            type:"radio",                                       
-            id:'DW0702',
-            choices:[
-              {
-                description:"TRUE",
-                value:0
-              },
-              {
-                description:"FALSE",
-                value:1
-              }
-            ],
-            skipQuestion:false
-          },
-          {
-            qString:"Was Seth Bishop defeated?",         
-            type:"radio",                                       
-            id:'DW0703',
-            choices:[
-              {
-                description:"TRUE",
-                value:0
-              },
-              {
-                description:"FALSE",
-                value:1
-              }
-            ],
-            skipQuestion:false
-          }
-        ],
-      },
-      "Lost in Time and Space":{
-        title:"Lost in Time and Space",
-        total_questions:3,
-        questions:[
-          {
-            qString:"All investigators resigned or defeated",         
-            type:"radio",                                       
-            id:'DW0801',
-            choices:[
-              {
-                description:"TRUE",
-                value:0
-              },
-              {
-                description:"FALSE",
-                value:1
-              }
-            ],
-            skipQuestion:false,
-            relatedQuestions:{
-              DW0802:0,
-              DW0803:1
-            }
-          },
-          {
-            qString:"Did the investigators reach Act 4?",         
-            type:"radio",                                       
-            id:'DW0802',
-            choices:[
-              {
-                description:"TRUE",
-                value:0
-              },
-              {
-                description:"FALSE",
-                value:1
-              }
-            ],
-            skipQuestion:false,
-          },
-          {
-            qString:"Did the investigators defeat Yog-Sothoth?",         
-            type:"radio",                                       
-            id:'DW0803',
-            choices:[
-              {
-                description:"TRUE",
-                value:0
-              },
-              {
-                description:"FALSE",
-                value:1
-              }
-            ],
-            skipQuestion:false,
-          }
-        ],
-      },
+      // "The Pallid Mask":{
+      //   title:"The Pallid Mask",
+      //   total_questions:3,
+      //   questions:[
+      //     {
+      //       qString:"Did you wake up in the catacombs?",             
+      //       type:"radio",
+      //       id:'PC0601',
+      //       choices:[
+      //         {
+      //           description:"Yes, woke up inside the catacombs",
+      //           value:0
+      //         },
+      //         {
+      //           description:"No, entered catacombs by choice.",
+      //           value:1
+      //         }
+      //       ],
+      //       skipQuestion:false,
+      //       relatedQuestions:{
+      //         DW0602:1
+      //       }
+      //     },
+      //     {
+      //       qString:"Agenda reached full doom?",              
+      //       type:"radio",
+      //       id:'PC0602',
+      //       choices:[
+      //         {
+      //           description:"TRUE",               //you know the site of the gate
+      //           value:0
+      //         },
+      //         {
+      //           description:"FALSE",
+      //           value:1
+      //         }
+      //       ],
+      //       skipQuestion:false,
+      //       relatedQuestions:{
+      //         DW0602:1
+      //       }
+      //     },
+      //     {
+      //       qString:"All investigators resigned or defeated",         //todo, check necronomicon
+      //       type:"radio",                                       
+      //       id:'PC0602',
+      //       choices:[
+      //         {
+      //           description:"TRUE",
+      //           value:0
+      //         },
+      //         {
+      //           description:"FALSE",
+      //           value:1
+      //         }
+      //       ],
+      //       skipQuestion:false
+      //     }
+      //   ],
+      // },
+      // "Black Stars Rise":{
+      //   title:"Black Stars Rise",
+      //   total_questions:3,
+      //   questions:[
+      //     {
+      //       qString:"Agenda reached full doom?",              //if 0, R2
+      //       type:"radio",
+      //       id:'PC0701',
+      //       choices:[
+      //         {
+      //           description:"TRUE",
+      //           value:0
+      //         },
+      //         {
+      //           description:"FALSE",
+      //           value:1
+      //         }
+      //       ],
+      //       skipQuestion:false,
+      //       relatedQuestions:{
+      //         DW0702:1
+      //       }
+      //     },
+      //     {
+      //       qString:"All investigators resigned or defeated",         
+      //       type:"radio",                                       
+      //       id:'PC0702',
+      //       choices:[
+      //         {
+      //           description:"TRUE",
+      //           value:0
+      //         },
+      //         {
+      //           description:"FALSE",
+      //           value:1
+      //         }
+      //       ],
+      //       skipQuestion:false
+      //     },
+      //     {
+      //       qString:"Was Seth Bishop defeated?",         
+      //       type:"radio",                                       
+      //       id:'PC0703',
+      //       choices:[
+      //         {
+      //           description:"TRUE",
+      //           value:0
+      //         },
+      //         {
+      //           description:"FALSE",
+      //           value:1
+      //         }
+      //       ],
+      //       skipQuestion:false
+      //     }
+      //   ],
+      // },
+      // "Lost in Time and Space":{
+      //   title:"Lost in Time and Space",
+      //   total_questions:3,
+      //   questions:[
+      //     {
+      //       qString:"All investigators resigned or defeated",         
+      //       type:"radio",                                       
+      //       id:'DW0801',
+      //       choices:[
+      //         {
+      //           description:"TRUE",
+      //           value:0
+      //         },
+      //         {
+      //           description:"FALSE",
+      //           value:1
+      //         }
+      //       ],
+      //       skipQuestion:false,
+      //       relatedQuestions:{
+      //         DW0802:0,
+      //         DW0803:1
+      //       }
+      //     },
+      //     {
+      //       qString:"Did the investigators reach Act 4?",         
+      //       type:"radio",                                       
+      //       id:'DW0802',
+      //       choices:[
+      //         {
+      //           description:"TRUE",
+      //           value:0
+      //         },
+      //         {
+      //           description:"FALSE",
+      //           value:1
+      //         }
+      //       ],
+      //       skipQuestion:false,
+      //     },
+      //     {
+      //       qString:"Did the investigators defeat Yog-Sothoth?",         
+      //       type:"radio",                                       
+      //       id:'DW0803',
+      //       choices:[
+      //         {
+      //           description:"TRUE",
+      //           value:0
+      //         },
+      //         {
+      //           description:"FALSE",
+      //           value:1
+      //         }
+      //       ],
+      //       skipQuestion:false,
+      //     }
+      //   ],
+      // },
 
       
   }
