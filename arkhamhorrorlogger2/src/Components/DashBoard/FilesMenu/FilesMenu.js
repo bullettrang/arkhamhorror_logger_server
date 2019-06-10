@@ -13,9 +13,7 @@ class FilesMenu extends Component{
     constructor(props){
         super(props);
         this.state={
-            files:[],
             selected:null,
-            toCampaign:false,
             toScenario:false,
             loading:false,
             title:''
@@ -26,6 +24,7 @@ class FilesMenu extends Component{
                 this.props.fetchFiles();
         }
     }
+
 
 
     renderFiles(){
@@ -50,6 +49,7 @@ class FilesMenu extends Component{
             return 'Start a new file by pressing \'Create Campaign\' button below';
         }
     }
+
 
     selectHandler=(e,title)=>{
         this.setState({selected:e});
@@ -80,22 +80,32 @@ class FilesMenu extends Component{
         }
     }
 
-    deleteHandler =(fileid)=>{
-        this.props.deleteByFileId(fileid);
-    }
-    render(){
-        const {toScenario,title}= this.state;
-
-        if(toScenario){
-            return <Redirect to="scenario"/>
-        }
-
-            let files=     <form onSubmit={this.submitHandler} style={{margin:"0 auto"}}>
+    renderForm=()=>{
+        const {title}= this.state;
+        return(
+            <form onSubmit={this.submitHandler} style={{margin:"0 auto"}}>
             <div className="Files_Wrapper">
                 {this.renderFiles()}
             </div>
             <SubmitButton title={`Continue ${title}`}/>
         </form>
+        )
+    }
+
+
+
+
+    deleteHandler =(fileid)=>{
+        this.props.deleteByFileId(fileid);
+    }
+    render(){
+        const {toScenario}= this.state;
+
+        if(toScenario){
+            return <Redirect to="scenario"/>
+        }
+
+            let files= this.renderForm();
         if(this.state.loading){
             files=<Spinner/>;
         }

@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom';
 import CompletedScenarios from './CompletedScenarios/CompletedScenarios';
 import {CAMPAIGN_IMAGES} from '../../../../constants/CampaignImages';
 import DeleteButton from '../../../Forms/Button/DeleteButton';
-
+import './FileWrapper.css';
 const FileWrapper = (props)=>{
     const {selected,title,clicked,completedScenarios,id,deleted} = props;
     const styledBGSelected={
@@ -45,7 +45,6 @@ const FileWrapper = (props)=>{
         opacity:"1",        //added box-shadow animation to stylesheet
         transition:'opacity 300ms ease-in-out,transform 300ms cubic-bezier(0.455,0.03,0.515,0.955)',
         boxShadow:  "0px 5px 5px  rgba(0,0,0,0.3)"
-        // transition:'transform 300ms cubic-bezier(0.455,0.03,0.515,0.955)'
     }
 
     if(selected===id){
