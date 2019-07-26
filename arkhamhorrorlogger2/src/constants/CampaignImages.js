@@ -1,5 +1,10 @@
+// import NOZ_IMG from '../Assets/CAMPAIGN_COVER/NOZ_form_img.png';
+// import DWL_IMG from '../Assets/CAMPAIGN_COVER/DWL_form_img.jpg';
+// import PC_IMG from '../Assets/CAMPAIGN_COVER/PC_form_img.jpg';
+// import FA_IMG from '../Assets/CAMPAIGN_COVER/FA_form_img.jpg';
+
 import NOZ_IMG from '../Assets/CAMPAIGN_COVER/NOZ_form_img.png';
-import DWL_IMG from '../Assets/CAMPAIGN_COVER/DWL_form_img.jpg';
+import DWL_IMG from 'http://arkham-horror-logger.s3.us-east-2.amazonaws.com/static/media/DWL_form_img.6a87e304.jpg';
 import PC_IMG from '../Assets/CAMPAIGN_COVER/PC_form_img.jpg';
 import FA_IMG from '../Assets/CAMPAIGN_COVER/FA_form_img.jpg';
 
