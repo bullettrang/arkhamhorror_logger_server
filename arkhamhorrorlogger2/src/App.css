@@ -49,13 +49,20 @@
 }
 
 
-@font-face {
+/* @font-face {
   font-family: 'teutonicregular';
   src: url('./fonts/teutonic-webfont.woff2') format('woff2'),
        url('./fonts/Teutonic.ttf')  format('truetype'),
        url('./fonts/teutonic-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+} */
+
+@font-face {
+  font-family: 'teutonicregular';
+  src: url('https://arkham-horror-logger.s3.us-east-2.amazonaws.com/static/media/teutonic-webfont.7c67c213.woff2') format('woff2'),
+       url('https://arkham-horror-logger.s3.us-east-2.amazonaws.com/static/media/Teutonic.9879ce85.ttf')  format('truetype'),
+       url('https://arkham-horror-logger.s3.us-east-2.amazonaws.com/static/media/teutonic-webfont.d41b7b29.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
-
-
