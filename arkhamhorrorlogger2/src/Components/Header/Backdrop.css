@@ -3,7 +3,8 @@
     position:fixed;
     height:100%;
     width:100%;
-    background: url('../../Assets/staticScreen.gif');
+    /* background: url('../../Assets/staticScreen.gif'); */
+    background: url('https://arkham-horror-logger.s3.us-east-2.amazonaws.com/static/media/staticScreen.6a0e713e.gif');
     z-index:100;
     top:0;
     left:0;
