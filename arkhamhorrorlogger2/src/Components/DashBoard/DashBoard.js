@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Link} from "react-router-dom";
 import {connect} from 'react-redux';
 import FilesMenu from './FilesMenu/FilesMenu';
-import SlideShow from '../UI/SlideShow';
+
 import * as actions from '../../actions/index';
 import "./DashBoard.css"
 
@@ -20,8 +20,7 @@ class Dashboard extends Component{
             default: 
                 return (
                     <React.Fragment>
-                        {/* <FilesMenu/> */}
-                        <SlideShow/>
+                        <FilesMenu/>
                         <div className="Campaign_Link--wrapper">
                             <Link className="Campaign_Link" to="/campaign"> 
                                 <span className="Campaign_Wrapper"><span>+</span> CREATE A CAMPAIGN</span>
