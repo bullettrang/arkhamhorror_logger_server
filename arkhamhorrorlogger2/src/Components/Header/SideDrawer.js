@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import './SideDrawer.css';
 const SideDrawer =(props)=>{
@@ -17,6 +18,12 @@ const SideDrawer =(props)=>{
         </nav>
     )
 
+}
+
+
+SideDrawer.propTypes={
+    show:PropTypes.boolean,
+    auth:PropTypes.any
 }
 
 export default SideDrawer;

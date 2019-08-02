@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import { Link} from "react-router-dom";
 import {connect} from 'react-redux';
 import FilesMenu from './FilesMenu/FilesMenu';
@@ -7,7 +8,15 @@ import * as actions from '../../actions/index';
 import "./DashBoard.css"
 
 
+
+
+
 class Dashboard extends Component{
+    static get propTypes() { 
+        return { 
+            auth: PropTypes.any
+        }; 
+    }
 
     renderContent(){
         switch(this.props.auth){

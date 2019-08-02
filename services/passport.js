@@ -19,8 +19,8 @@ passport.deserializeUser((id,done)=>{
 passport.use(new GoogleStrategy({
     clientID:keys.googleClientID,
     clientSecret:keys.googleClientSecret,
-    callbackURL:'/auth/google/callback',
-    proxy:true
+    callbackURL: keys.redirectDomain +'/auth/google/callback',
+    // proxy:true
 }, (accessToken,refreshToken,profile,done)=>{
    
     const {emails}= profile;
