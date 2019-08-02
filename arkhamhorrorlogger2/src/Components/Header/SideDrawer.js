@@ -21,9 +21,5 @@ const SideDrawer =(props)=>{
 }
 
 
-SideDrawer.propTypes={
-    show:PropTypes.boolean,
-    auth:PropTypes.any
-}
 
 export default SideDrawer;
