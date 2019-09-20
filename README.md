@@ -6,7 +6,7 @@ hosted at https://obscure-cliffs-25810.herokuapp.com/
 <p>Clone project, enter command 'npm run dev' to launch application in local environment</p>
 
 <h2>Create multiple game play progresses based on campaign selection</h2>
-<img src="./fileselector/>
+<img src="./fileselector.png"/>
  
  <h2> Compare your player decisions with other users</h2>
- <img src="./resultsscreen"/>
+ <img src="./resultsscreen.png"/>
